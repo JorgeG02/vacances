@@ -1,0 +1,47 @@
+<h1>Completa un nuevo viaje</h1>
+<div id="formulariosContent">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre del viaje</mat-label>
+            <input matInput placeholder="Placeholder" #viaje>
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-hint>Pon el nombre del país visitado o evento del viaje</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha del viaje</mat-label>
+            <input matInput [matDatepicker]="picker" #fecha>
+            <mat-hint>Clic en el icono para elegir fecha de inicio del viaje</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Imagen principal</mat-label>
+            <input matInput placeholder="Placeholder" #imagen>
+            <mat-icon matSuffix>add_a_photo</mat-icon>
+            <mat-hint>Coloca el enlace a la imagen de portada</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción corta del viaje</mat-label>
+            <input matInput placeholder="Placeholder" #descripcion>
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-hint>Añade una descripción de máximo 200 caracteres</mat-hint>
+        </mat-form-field>
+    </p>
+   <!--  <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Detalles extensos del viaje</mat-label>
+            <textarea matInput #detalles></textarea>
+            <mat-icon matSuffix>edit_note</mat-icon>
+            <mat-hint>Extiéndete con todo lo que quieras recordar</mat-hint>
+        </mat-form-field>
+    </p> -->
+    <div class="example-button-row, botonFormulario">
+        <button mat-flat-button (click)="creaViaje(viaje.value, fecha.value, imagen.value, descripcion.value)">Guardar viaje</button>
+    </div>
+</div>

@@ -1,17 +1,21 @@
-<mat-card class="example-card" appearance="outlined">
+@for (viaje of viajes; track viaje) {
+<mat-card class="example-card" appearance="outlined" id="cajaVacacion">
+    
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{viaje}}</mat-card-title>
-        <mat-card-subtitle>{{fecha}}</mat-card-subtitle>
+        <mat-card-title>{{viaje.viaje}}</mat-card-title>
+        <mat-card-subtitle>{{viaje.fecha}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{imagen}}" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{viaje.imagen}}" alt="Photo of a Shiba Inu">
     <mat-card-content>
         <p>
-            {{descripcion}}
+            {{viaje.descripcion}}
         </p>
     </mat-card-content>
     <mat-card-actions>
         <button mat-button>Ver el viaje</button>
     </mat-card-actions>
-</mat-card>
 
+</mat-card>
+}
+    

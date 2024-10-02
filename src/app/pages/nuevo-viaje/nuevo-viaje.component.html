@@ -33,6 +33,14 @@
             <mat-hint>Añade una descripción de máximo 200 caracteres</mat-hint>
         </mat-form-field>
     </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Detalle del viaje</mat-label>
+            <input matInput placeholder="Placeholder" #detalle>
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-hint>Añade todo lo que quieras recordar del viaje</mat-hint>
+        </mat-form-field>
+    </p>
    <!--  <p>
         <mat-form-field appearance="outline">
             <mat-label>Detalles extensos del viaje</mat-label>
@@ -42,6 +50,8 @@
         </mat-form-field>
     </p> -->
     <div class="example-button-row, botonFormulario">
-        <button mat-flat-button (click)="creaViaje(viaje.value, fecha.value, imagen.value, descripcion.value)">Guardar viaje</button>
+        <button mat-flat-button (click)="creaViaje(viaje.value, fecha.value, imagen.value, descripcion.value, detalle.value)">
+        Guardar viaje</button>
     </div>
 </div>
+

@@ -5,21 +5,18 @@
     </mat-toolbar>
 
     <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+        <mat-sidenav id="sidebar" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
             fixedTopGap="56">
             <mat-nav-list>
                 @for (nav of fillerNav; track nav) {
-                <a mat-list-item [routerLink] = nav.url>{{nav.textoEnlace}}</a>
+                <a mat-list-item [routerLink]=nav.url (click)="snav.toggle()">{{nav.textoEnlace}}</a>
                 }
             </mat-nav-list>
         </mat-sidenav>
 
         <mat-sidenav-content>
-            <!-- @for (content of fillerContent; track content) {
-             <p>{{content}}</p> 
-            <app-vacacion id="cajaVacacion"></app-vacacion>
-            } -->
             <router-outlet></router-outlet>
         </mat-sidenav-content>
+
     </mat-sidenav-container>
 </div>

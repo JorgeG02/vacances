@@ -5,6 +5,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { Ivacacion } from '../../vacacion';
+import { Router } from '@angular/router';
+
+
+//Servicios
+import { DatosVacacionService } from '../../shared/services/datos-vacacion.service';
 
 @Component({
   selector: 'app-nuevo-viaje',
@@ -16,22 +22,15 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
   
-export class NuevoViajeComponent{
+export class NuevoViajeComponent {
 
-  viaje = "Suecia";
-  fecha = "agosto 1998";
-  imagen = "img/playa.jpg";
-  descripcion = "Aquel año cogimos un apartamento cerca de las playas de Grecia.";
-  detalle = "";
-  nuevoViaje: object = {};
+  viajes: Ivacacion[];
+  constructor(private datosVacacionService: DatosVacacionService, private router: Router) { }
 
-  creaViaje(viaje: string, fecha: string, imagen: string, descripcion: string) {
-    this.viaje = viaje;
-    this.fecha = fecha;
-    this.imagen = imagen;
-    this.descripcion = descripcion;
-    this.nuevoViaje = [viaje, fecha, imagen, descripcion ];
-    console.log(this.nuevoViaje)
-   
+  creaViaje(viaje: string, fecha: string, imagen: string, descripcion: string, detalle: string) {
+    this.datosVacacionService.creaViaje(viaje, fecha, imagen, descripcion, detalle);
+    this.viajes = this.datosVacacionService.viajes;
+    this.router.navigate(['']); 
   }
 }
+

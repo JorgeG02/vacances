@@ -8,14 +8,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { VacacionComponent } from '../vacacion/vacacion.component';
+
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { VacacionesComponent } from '../../pages/vacaciones/vacaciones.component';
+
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, VacacionComponent, RouterLink, RouterOutlet, VacacionesComponent],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, RouterLink, RouterOutlet],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.sass'
 })

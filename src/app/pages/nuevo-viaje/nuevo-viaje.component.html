@@ -3,7 +3,7 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Nombre del viaje</mat-label>
-            <input matInput placeholder="Placeholder" #viaje>
+            <input matInput placeholder="Nombre del viaje" #viaje>
             <mat-icon matSuffix>location_on</mat-icon>
             <mat-hint>Pon el nombre del país visitado o evento del viaje</mat-hint>
         </mat-form-field>
@@ -11,7 +11,7 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Fecha del viaje</mat-label>
-            <input matInput [matDatepicker]="picker" #fecha>
+            <input matInput [matDatepicker]="picker" placeholder="Haz clic en el icono" #fecha>
             <mat-hint>Clic en el icono para elegir fecha de inicio del viaje</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -20,7 +20,7 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Imagen principal</mat-label>
-            <input matInput placeholder="Placeholder" #imagen>
+            <input matInput placeholder="Imagen principal" #imagen>
             <mat-icon matSuffix>add_a_photo</mat-icon>
             <mat-hint>Coloca el enlace a la imagen de portada</mat-hint>
         </mat-form-field>
@@ -28,7 +28,7 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Descripción corta del viaje</mat-label>
-            <input matInput placeholder="Placeholder" #descripcion>
+            <input matInput placeholder="Descripción corta del viaje" #descripcion>
             <mat-icon matSuffix>description</mat-icon>
             <mat-hint>Añade una descripción de máximo 200 caracteres</mat-hint>
         </mat-form-field>
@@ -36,7 +36,7 @@
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Detalle del viaje</mat-label>
-            <input matInput placeholder="Placeholder" #detalle>
+            <input matInput placeholder="Detalle del viaje" #detalle>
             <mat-icon matSuffix>description</mat-icon>
             <mat-hint>Añade todo lo que quieras recordar del viaje</mat-hint>
         </mat-form-field>

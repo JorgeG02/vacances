@@ -54,9 +54,8 @@ export class DatosVacacionService {
 
   constructor() { }
 
-  addViaje(viaje: Ivacacion) {
-    this.viajes.unshift(viaje);
-  }
+
+
 
   viaje = "";
   fecha = "";
@@ -64,6 +63,22 @@ export class DatosVacacionService {
   descripcion = "";
   detalle = "";
   nuevoViaje: Ivacacion;
+
+  addViaje(viaje: Ivacacion) {
+    this.viajes.unshift(viaje);
+  }
+
+  getViajeById(id: string) {
+    return null;
+  }
+
+  getViajes() {
+    return null;
+  }
+
+  removeViaje(id: string) {
+    return null;
+  }
 
   creaViaje(viaje: string, fecha: string, imagen: string, descripcion: string, detalle: string) {
   

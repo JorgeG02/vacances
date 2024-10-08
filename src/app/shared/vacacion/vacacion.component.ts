@@ -16,11 +16,15 @@ import { DatosVacacionService } from '../services/datos-vacacion.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class VacacionComponent{
+export class VacacionComponent {
 
   viajes: Ivacacion[];
 
   constructor(private datosVacacionService: DatosVacacionService) {
-    this.viajes = datosVacacionService.viajes
+    if (datosVacacionService.obtenerDeLocalStorage().length === 0) {
+      this.viajes = datosVacacionService.viajes;
+    } else {
+      this.viajes = datosVacacionService.obtenerDeLocalStorage();
+    }
   }
 }

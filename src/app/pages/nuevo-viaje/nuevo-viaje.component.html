@@ -1,42 +1,60 @@
 <h1>Completa un nuevo viaje</h1>
 <div id="formulariosContent">
+    <form [formGroup]="formNuevoViaje">
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Nombre del viaje</mat-label>
-            <input matInput placeholder="Nombre del viaje" #viaje>
+            <input formControlName="viaje" matInput placeholder="Nombre del viaje">
             <mat-icon matSuffix>location_on</mat-icon>
             <mat-hint>Pon el nombre del país visitado o evento del viaje</mat-hint>
         </mat-form-field>
     </p>
+    <div class="alertFormError" [hidden]="viaje.valid || viaje.pristine">
+        El nombre es obligatorio
+    </div>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Fecha del viaje</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="Haz clic en el icono" #fecha>
+            <input formControlName="fecha" matInput [matDatepicker]="picker" placeholder="Haz clic en el icono">
             <mat-hint>Clic en el icono para elegir fecha de inicio del viaje</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
     </p>
+    <div class="alertFormError" [hidden]="fecha?.valid || fecha?.pristine">
+        La fecha es obligatoria, haz clic en el icono
+    </div>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Imagen principal</mat-label>
-            <input matInput placeholder="Imagen principal" #imagen>
+            <input formControlName="imagen" matInput placeholder="Imagen principal">
             <mat-icon matSuffix>add_a_photo</mat-icon>
             <mat-hint>Coloca el enlace a la imagen de portada</mat-hint>
         </mat-form-field>
     </p>
+    <div class="alertFormError" [hidden]="imagen.valid || imagen.pristine">
+        La imagen es obligatoria
+    </div>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Descripción corta del viaje</mat-label>
-            <input matInput placeholder="Descripción corta del viaje" #descripcion>
+            <input formControlName="descripcion" matInput placeholder="Descripción corta del viaje">
             <mat-icon matSuffix>description</mat-icon>
             <mat-hint>Añade una descripción de máximo 200 caracteres</mat-hint>
         </mat-form-field>
     </p>
+    <div class="alertFormError" [hidden]="descripcion.valid || descripcion.pristine">
+        <span >
+            la descripción es obligatoria
+        </span>
+        <!-- <span *ngIf = "descripcion.errors?.['actualLength'] > 120">
+            Máximo 120 caracteres
+        </span> -->
+    </div>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Detalle del viaje</mat-label>
-            <input matInput placeholder="Detalle del viaje" #detalle>
+            <input formControlName="detalle" matInput placeholder="Detalle del viaje">
             <mat-icon matSuffix>description</mat-icon>
             <mat-hint>Añade todo lo que quieras recordar del viaje</mat-hint>
         </mat-form-field>
@@ -49,9 +67,15 @@
             <mat-hint>Extiéndete con todo lo que quieras recordar</mat-hint>
         </mat-form-field>
     </p> -->
-    <div class="example-button-row, botonFormulario">
+    <!-- <div class="example-button-row, botonFormulario" [disabled] = formNuevoViaje.invalid>
         <button mat-flat-button (click)="creaViaje(viaje.value, fecha.value, imagen.value, descripcion.value, detalle.value)">
         Guardar viaje</button>
+    </div> -->
+    <div class="example-button-row, botonFormulario">
+        <button mat-flat-button  [disabled]='formNuevoViaje.invalid'
+            (click)="creaViaje2()">
+            Guardar viaje</button>
     </div>
+    </form>
 </div>
 

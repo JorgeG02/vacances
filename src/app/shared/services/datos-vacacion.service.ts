@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Ivacacion } from '../../vacacion';
 
 @Injectable({
@@ -53,9 +53,10 @@ export class DatosVacacionService {
 
 
   constructor() { }
+  
+  private readonly STORAGE_KEY = 'Lista de viajes';
 
-
-
+  
 
   viaje = "";
   fecha = "";
@@ -66,6 +67,7 @@ export class DatosVacacionService {
 
   addViaje(viaje: Ivacacion) {
     this.viajes.unshift(viaje);
+    this.guardarEnLocalStorage(this.viajes);
   }
 
   getViajeById(id: string) {
@@ -96,5 +98,15 @@ export class DatosVacacionService {
 
   }
 
+  guardarEnLocalStorage(array: any[]): void {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(array));
+  }
+
+  obtenerDeLocalStorage(): any[] {
+    const items = localStorage.getItem(this.STORAGE_KEY);
+    return items ? JSON.parse(items) : []; // Retorna un array vacío si no hay datos
+  }
+
   
 }
+

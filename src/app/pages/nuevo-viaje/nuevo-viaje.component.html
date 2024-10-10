@@ -1,6 +1,6 @@
-<h1>Completa un nuevo viaje</h1>
+<h3>Completa un nuevo viaje</h3>
 <div id="formulariosContent">
-    <form [formGroup]="formNuevoViaje">
+    <form [formGroup]="formNuevoViaje" class="formNuevo">
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Nombre del viaje</mat-label>
@@ -40,7 +40,7 @@
             <mat-label>Descripción corta del viaje</mat-label>
             <input formControlName="descripcion" matInput placeholder="Descripción corta del viaje">
             <mat-icon matSuffix>description</mat-icon>
-            <mat-hint>Añade una descripción de máximo 200 caracteres</mat-hint>
+            <mat-hint>Añade una descripción de máximo 120 caracteres</mat-hint>
         </mat-form-field>
     </p>
     <div class="alertFormError" [hidden]="descripcion.valid || descripcion.pristine">
@@ -73,7 +73,7 @@
     </div> -->
     <div class="example-button-row, botonFormulario">
         <button mat-flat-button  [disabled]='formNuevoViaje.invalid'
-            (click)="creaViaje2()">
+            (click)="creaViaje()">
             Guardar viaje</button>
     </div>
     </form>

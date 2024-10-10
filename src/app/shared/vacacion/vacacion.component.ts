@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Ivacacion } from '../../vacacion';
 
 //Servicios
-import { DatosVacacionService } from '../services/datos-vacacion.service';
+import { DatosVacacionService } from '../../services/datos-vacacion.service';
 
 
 @Component({
@@ -21,10 +21,6 @@ export class VacacionComponent {
   viajes: Ivacacion[];
 
   constructor(private datosVacacionService: DatosVacacionService) {
-    if (datosVacacionService.obtenerDeLocalStorage().length === 0) {
-      this.viajes = datosVacacionService.viajes;
-    } else {
-      this.viajes = datosVacacionService.obtenerDeLocalStorage();
-    }
+    this.viajes = datosVacacionService.actualizaViajes();
   }
 }

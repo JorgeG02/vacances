@@ -23,7 +23,7 @@ export class NavBarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
 
   /* fillerNav = Array.from({ length: 6 }, (_, i) => `Nav Item ${i + 1}`); */
-  fillerNav = [{ url: '', textoEnlace: "Home" }, { url: '/nuevo-viaje', textoEnlace: "Nuevo Viaje" }]
+  fillerNav = [{ url: '', textoEnlace: "Home" }, { url: '/nuevo-viaje', textoEnlace: "Nuevo Viaje" }, { url: '/admin', textoEnlace: "Admin" }]
 
   private _mobileQueryListener: () => void;
 

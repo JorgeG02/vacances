@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Ivacacion } from '../../vacacion';
+import { Ivacacion } from '../vacacion';
 
 @Injectable({
   providedIn: 'root'
@@ -56,8 +56,6 @@ export class DatosVacacionService {
   
   private readonly STORAGE_KEY = 'Lista de viajes';
 
-  
-
   viaje = "";
   fecha = "";
   imagen = "";
@@ -66,20 +64,24 @@ export class DatosVacacionService {
   nuevoViaje: Ivacacion;
 
   addViaje(viaje: Ivacacion) {
+    this.viajes = this.actualizaViajes();
     this.viajes.unshift(viaje);
     this.guardarEnLocalStorage(this.viajes);
   }
 
-  getViajeById(id: string) {
-    return null;
+  getViajeById(id: number): Ivacacion {
+    //console.log(this.viajes[id])
+    return this.viajes[id];
   }
 
   getViajes() {
     return null;
   }
 
-  removeViaje(id: string) {
-    return null;
+  removeViaje(id: number) {
+    this.viajes.splice(id, 1);
+    this.guardarEnLocalStorage(this.viajes)
+    return this.actualizaViajes();
   }
 
   creaViaje(viaje: string, fecha: string, imagen: string, descripcion: string, detalle: string) {
@@ -92,20 +94,39 @@ export class DatosVacacionService {
       detalle: detalle
     };
 
+
     this.addViaje(this.nuevoViaje);
     console.log(this.nuevoViaje);
     console.log(this.viajes);
 
   }
 
-  guardarEnLocalStorage(array: any[]): void {
+  guardarEnLocalStorage(array: Ivacacion[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(array));
   }
 
-  obtenerDeLocalStorage(): any[] {
+  obtenerDeLocalStorage(): Ivacacion[] {
     const items = localStorage.getItem(this.STORAGE_KEY);
     return items ? JSON.parse(items) : []; // Retorna un array vacío si no hay datos
   }
+
+  actualizaViajes(): Ivacacion[] {
+    if (this.obtenerDeLocalStorage().length === 0) {
+      this.viajes = this.viajes;
+    } else {
+      this.viajes = this.obtenerDeLocalStorage();
+    }
+    return this.viajes;
+  }
+
+  actualizaViajeById(id: number, newValues: Partial<Ivacacion>): void{
+    const item = this.viajes.find(item => newValues.id === id);
+  if (item) {
+    Object.assign(item, newValues); // Actualiza el objeto con los nuevos valores
+    }
+    this.guardarEnLocalStorage(this.viajes);
+    this.actualizaViajes();
+}
 
   
 }

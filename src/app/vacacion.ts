@@ -1,5 +1,5 @@
 export interface Ivacacion {
-    id?: string,
+    id?: number,
     viaje: string,
     fecha: string,
     imagen: string,

@@ -53,7 +53,7 @@ export class DatosVacacionService {
 
 
   constructor() { }
-  
+
   private readonly STORAGE_KEY = 'Lista de viajes';
 
   viaje = "";
@@ -64,28 +64,29 @@ export class DatosVacacionService {
   nuevoViaje: Ivacacion;
 
   addViaje(viaje: Ivacacion) {
+
     this.viajes = this.actualizaViajes();
     this.viajes.unshift(viaje);
     this.guardarEnLocalStorage(this.viajes);
+
   }
 
   getViajeById(id: number): Ivacacion {
-    //console.log(this.viajes[id])
-    return this.viajes[id];
-  }
 
-  getViajes() {
-    return null;
+    return this.viajes[id];
+    
   }
 
   removeViaje(id: number) {
+
     this.viajes.splice(id, 1);
     this.guardarEnLocalStorage(this.viajes)
     return this.actualizaViajes();
+
   }
 
   creaViaje(viaje: string, fecha: string, imagen: string, descripcion: string, detalle: string) {
-  
+
     this.nuevoViaje = {
       viaje: viaje,
       fecha: fecha,
@@ -93,8 +94,6 @@ export class DatosVacacionService {
       descripcion: descripcion,
       detalle: detalle
     };
-
-
     this.addViaje(this.nuevoViaje);
     console.log(this.nuevoViaje);
     console.log(this.viajes);
@@ -102,15 +101,20 @@ export class DatosVacacionService {
   }
 
   guardarEnLocalStorage(array: Ivacacion[]): void {
+
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(array));
+
   }
 
   obtenerDeLocalStorage(): Ivacacion[] {
+
     const items = localStorage.getItem(this.STORAGE_KEY);
     return items ? JSON.parse(items) : []; // Retorna un array vacío si no hay datos
+
   }
 
   actualizaViajes(): Ivacacion[] {
+
     if (this.obtenerDeLocalStorage().length === 0) {
       this.viajes = this.viajes;
     } else {
@@ -119,15 +123,17 @@ export class DatosVacacionService {
     return this.viajes;
   }
 
-  actualizaViajeById(id: number, newValues: Partial<Ivacacion>): void{
+  modificaViajeById(id: number, newValues: Partial<Ivacacion>): void {
+
     const item = this.viajes.find(item => newValues.id === id);
-  if (item) {
-    Object.assign(item, newValues); // Actualiza el objeto con los nuevos valores
+    if (item) {
+      Object.assign(item, newValues);
     }
     this.guardarEnLocalStorage(this.viajes);
     this.actualizaViajes();
-}
 
-  
+  }
+
+
 }
 

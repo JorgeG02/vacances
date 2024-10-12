@@ -16,7 +16,8 @@
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Fecha del viaje</mat-label>
-                    <input matInput [matDatepicker]="picker" placeholder="Haz clic en el icono" value="{{viajeAEditar.fecha}}" #fecha>
+                    <input matInput [matDatepicker]="picker" placeholder="Haz clic en el icono"
+                        value="{{viajeAEditar.fecha}}" #fecha>
                     <mat-hint>Clic en el icono para elegir fecha de inicio del viaje</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
@@ -28,7 +29,7 @@
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Imagen principal</mat-label>
-                    <input  matInput placeholder="Imagen principal" value="{{viajeAEditar.imagen}}" #imagen>
+                    <input matInput placeholder="Imagen principal" value="{{viajeAEditar.imagen}}" #imagen>
                     <mat-icon matSuffix>add_a_photo</mat-icon>
                     <mat-hint>Coloca el enlace a la imagen de portada</mat-hint>
                 </mat-form-field>
@@ -39,7 +40,8 @@
             <p>
                 <mat-form-field appearance="outline">
                     <mat-label>Descripción corta del viaje</mat-label>
-                    <input matInput placeholder="Descripción corta del viaje" value="{{viajeAEditar.descripcion}}" #descripcion>
+                    <input matInput placeholder="Descripción corta del viaje" value="{{viajeAEditar.descripcion}}"
+                        #descripcion>
                     <mat-icon matSuffix>description</mat-icon>
                     <mat-hint>Añade una descripción de máximo 120 caracteres</mat-hint>
                 </mat-form-field>
@@ -70,13 +72,14 @@
             Guardar viaje</button>
         </div> -->
             <div class=" botonFormulario">
-                <button mat-flat-button (click)="modificaViaje({
+                <button type="button" mat-flat-button (click)="modificaViaje({
                     viaje: viaje.value,
                     fecha: fecha.value,
                     imagen: imagen.value,
                     descripcion: descripcion.value,
                     detalle: detalle.value})">
-                    Actualizar viaje</button>
+                Actualizar viaje
+                </button>
             </div>
         </form>
     </div>
@@ -112,7 +115,8 @@
     <ng-container matColumnDef="imagen">
         <th mat-header-cell *matHeaderCellDef> IMAGEN </th>
         <td mat-cell *matCellDef="let element">
-            <img class="imgMiniatura" src="{{element.imagen}}">  </td>
+            <img class="imgMiniatura" src="{{element.imagen}}">
+        </td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -145,4 +149,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
